@@ -1,3 +1,47 @@
-body {
-    background-color: aqua;
+@import 'variables';
+@import 'mixins';
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; 
 }
+
+html {
+    font-size: 62.5%;
+ }
+
+ body {
+    // background-color: $primary-color;
+}
+
+header {
+    display: flex;
+    justify-content: space-around;
+    padding: 3rem 0;
+    background-color: $secondary-color;
+    color: $txt-color;
+}
+
+h1 {
+    letter-spacing: $spacing;
+    font-family: $fonts;
+    font-weight: 700;
+    font-size: 5rem;
+    
+}
+
+nav {
+    gap: 6rem;
+    display: flex;
+    align-items: center;
+    letter-spacing: $spacing;
+    font-family: $fonts;
+    font-weight: 400;
+    font-size: 1.5rem;
+    // white-space: nowrap;
+    
+}
+
