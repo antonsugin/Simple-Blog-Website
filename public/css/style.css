@@ -9,16 +9,15 @@
 
 html {
   font-size: 62.5%;
-  height: 100vh;
 }
 
 body {
   height: 100vh;
   display: -ms-grid;
   display: grid;
-  -ms-grid-rows: fit-content(8rem) auto fit-content(8rem);
-      grid-template-rows: fit-content(8rem) auto fit-content(8rem);
       grid-template-areas: "header" "main" "footer";
+  -ms-grid-rows: auto 1fr auto;
+      grid-template-rows: auto 1fr auto;
 }
 
 header {
