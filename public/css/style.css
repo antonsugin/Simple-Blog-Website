@@ -29,8 +29,9 @@ header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -172,5 +173,38 @@ footer {
   footer {
     font-size: 1.2rem;
   }
+}
+
+.main-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 8rem;
+  padding: 15rem 0 15rem 20rem;
+  width: 50%;
+}
+
+.comment__header {
+  letter-spacing: 6px;
+  font-family: "Lora", serif;
+  font-weight: 600;
+  font-size: 3.5em;
+}
+
+.comment__txt {
+  margin-top: 4rem;
+  letter-spacing: 5px;
+  font-family: "Lora", serif;
+  font-weight: 400;
+  font-size: 2.5rem;
+  line-height: 5rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 80ch;
 }
 /*# sourceMappingURL=style.css.map */
