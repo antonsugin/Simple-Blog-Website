@@ -6,34 +6,53 @@ const router = express.Router();
 
 const port = process.env.PORT || 3000;
 
+const publicPath = path.join(__dirname, 'public/html');
 
 
-// app.get("/", (req, res) => {
+const target = new EventTarget();
 
-    
-//     res.sendFile(__dirname + "/index.html");
+target.addEventListener('click', (event) => {
+  console.log('foo event happened!');
+});
 
-//     // res.render();!!!!!!
-// });
+
 
 router.get('/',function(req,res){
-    res.sendFile(path.join(__dirname +'/index.html'));
-    //__dirname : It will resolve to your project folder.
+    
+    console.log(target.addEventListener)
+    
+    res.sendFile(publicPath + '/index.html');
+
   });
 
 router.get('/contact',function(req,res){
-    res.sendFile(path.join(__dirname +'/contact.html'));
 
-    // console.log(path.join(__dirname +'/contact.html'))
+    res.sendFile(publicPath + '/contact.html');
+    
     // res.render("")
   });
 
   router.get('/about',function(req,res){
-    res.sendFile(path.join(__dirname +'/about.html'));
+
+    document.getElementById("about").addEventListener("click", () => {
+        console.log('hi')
+        // res.redirect("/about");
+        res.sendFile(publicPath + '/about.html');
+    })
+
+    // res.sendFile(publicPath + '/about.html');
+    
+  });
+
+  router.get('/compose',function(req,res){
+
+    res.sendFile(publicPath + '/compose.html');
+    
   });
 
 
 app.post("/", (req, res) => {
+
 
     let simNum = Number(req.body.num1) + Number(req.body.num2);
     console.log(simNum)
@@ -43,12 +62,20 @@ app.post("/", (req, res) => {
     // res.redirect('/');!!!!!!
 });
 
+app.post("/about", (req, res) => {
+
+    document.getElementById("about").addEventListener("click", () => {
+        res.redirect("/about");
+    })
+
+    // res.redirect("/about");
+})
 
 
 
+app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', router);
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static("public"));
 
 app.listen(port, () => {
 
