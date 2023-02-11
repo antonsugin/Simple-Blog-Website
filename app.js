@@ -4,22 +4,22 @@ const app = express();
 const path = require("path");
 const router = express.Router();
 
-const port = process.env.PORT || 3000;
+var bodyParser = require('body-parser')
+// const ejs = require('ejs');
 
+
+const port = process.env.PORT || 3000;
 const publicPath = path.join(__dirname, 'public/html');
 
+// app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: true }))
 
-const target = new EventTarget();
-
-target.addEventListener('click', (event) => {
-  console.log('foo event happened!');
-});
 
 
 
 router.get('/',function(req,res){
     
-    console.log(target.addEventListener)
+    // res.render('blog', {blogItem: 'FOO'});
     
     res.sendFile(publicPath + '/index.html');
 
@@ -34,11 +34,7 @@ router.get('/contact',function(req,res){
 
   router.get('/about',function(req,res){
 
-    document.getElementById("about").addEventListener("click", () => {
-        console.log('hi')
-        // res.redirect("/about");
-        res.sendFile(publicPath + '/about.html');
-    })
+    
 
     // res.sendFile(publicPath + '/about.html');
     
@@ -51,31 +47,34 @@ router.get('/contact',function(req,res){
   });
 
 
-app.post("/", (req, res) => {
+// app.post("/", (req, res) => {
 
 
-    let simNum = Number(req.body.num1) + Number(req.body.num2);
-    console.log(simNum)
+    
 
-    res.send(simNum.toString());
+//     // res.redirect('/about');
+// });
 
-    // res.redirect('/');!!!!!!
+app.post("/compose", (req, res) => {
+
+
+    console.log(req.body.title)
+    // console.log('hi')
+    // console.log('h')
+
+    res.redirect('/');
 });
 
 app.post("/about", (req, res) => {
 
-    document.getElementById("about").addEventListener("click", () => {
-        res.redirect("/about");
-    })
-
-    // res.redirect("/about");
+    
 })
 
 
-
+app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', router);
-app.use(express.urlencoded({ extended: true }));
+// app.use(express.urlencoded({ extended: true }));
 
 app.listen(port, () => {
 
