@@ -1,0 +1,14 @@
+<%- include('header'); -%>
+
+<section class="comment">
+    <h2 class="comment__main-header">Compose</h2>
+    <form action="/compose" method="post">
+        <label for="title"><strong>Title</strong></label>
+        <input type="text" id="title" name="title">
+        <label for="textarea"><strong>Post</strong></label>
+        <textarea name="textarea" id="textarea" cols="30" rows="10"></textarea>
+        <button class="comment__publish" name="compose" value=''>>Publish</button>
+    </form>
+</section>
+
+<%- include('footer'); -%>  

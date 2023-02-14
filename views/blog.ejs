@@ -1,57 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css">
-    <title>Simple Blog Website</title>
-</head>
-<body>
 
-    <header>
-        <h2>Daily Jornal</h2>
-        <nav>
-            <section class="menu">
+<%- include('header'); -%>
 
-                <h3 class="menu__item">Home</h3>
-                <h3 class="menu__item" id="about">About Us</h3>
-                <h3 class="menu__item">Contact Us</h3>
-            </section>
 
-            <aside class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </aside>
-
-        </nav>
-    </header>
-    <main>
-        <article class="main-content">
-            <section class="comment">
-                <h1 class="comment__main-header">Home</h1>
-                <p class="comment__main-txt">
-                    There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. 
-                </p>
-            </section>
-
+        <section class="comment">
+            <h1 class="comment__main-header">Home</h1>
+            <p class="comment__main-txt">
+                There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. 
+            </p>
+        </section>
             
+        <% for (let i = 0; i < blogs.length; i++) { %>
+
             <section class="comment">
-                <h4 class="comment__header"><%= blogTitle %></h4>
-                <p class="comment__txt"><%= blogText %></p>
-                <span class="read-more">Read More</span>
+                <h4 class="comment__header"><%= blogs[i].title %></h4>
+                <p class="comment__txt"><%= blogs[i].text %></p>
+                <span class="read-more"><%= blogs[i].readMore %></span>
             </section>
-            
-        </article>
-    </main>
+        <% } %>
 
-    <footer>
-        <span>Daily Jornal by Anton</span>
-    </footer>
-
-</body>
-</html>
+<%- include('footer'); -%>            
+        

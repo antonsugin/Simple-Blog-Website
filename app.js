@@ -11,10 +11,12 @@ var bodyParser = require('body-parser')
 const port = process.env.PORT || 3000;
 const publicPath = path.join(__dirname, 'public/html');
 
-let title = '';
-let text = '';
+// let title = '';
+// let text = '';
+// let read = '';
 
-// let mokup = '';
+let blogItems = [];
+
 
 // app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -24,7 +26,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 router.get('/',function(req,res){
     
-    res.render('blog', {blogTitle: title, blogText: text});
+    res.render('blog', {blogs: blogItems});
     
     // res.sendFile(publicPath + '/index.html');
 
@@ -32,14 +34,15 @@ router.get('/',function(req,res){
 
 router.get('/contact',function(req,res){
 
-    res.sendFile(publicPath + '/contact.html');
+    res.render('contact');
+
+    // res.sendFile(publicPath + '/contact.html');
     
-    // res.render("")
   });
 
 router.get('/about',function(req,res){
 
-    
+    res.render('about');
 
     // res.sendFile(publicPath + '/about.html');
     
@@ -47,7 +50,9 @@ router.get('/about',function(req,res){
 
 router.get('/compose',function(req,res){
 
-    res.sendFile(publicPath + '/compose.html');
+    res.render('compose');
+
+    // res.sendFile(publicPath + '/compose.html');
     
   });
 
@@ -62,18 +67,18 @@ router.get('/compose',function(req,res){
 
 app.post("/compose", (req, res) => {
 
-    title = req.body.title;
-    text = req.body.textarea;
+    let blogItemsObj = {
+        'title' : '',
+        'text' : '',
+        'readMore' : 'Read More'
+    }
 
-    // mokup = `
-    // <section class="comment">
-    //     <h4 class="comment__header">${title}</h4>
-    //     <p class="comment__txt">
-    //         ${text}
-    //     </p>
-    //     <span class="read-more">Read More</span>
-    // </section>
-    // `
+    blogItemsObj.title = req.body.title;
+    blogItemsObj.text = req.body.textarea;
+    
+    blogItems.push(blogItemsObj)
+
+    console.log(req.body)
 
     res.redirect('/');
 });
