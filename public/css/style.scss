@@ -58,6 +58,11 @@ nav {
     align-items: center;
 }
 
+a {
+    color: $header-txt-color;
+    text-decoration: none;
+}
+
 .menu {
     gap: 6rem;
     display: flex;
@@ -280,6 +285,7 @@ footer {
 }
 
 
+
 /*Compose styling*/
 
 form {
@@ -343,4 +349,6 @@ textarea {
         }
     }
   }
+
+  
 

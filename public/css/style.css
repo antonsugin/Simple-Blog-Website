@@ -65,6 +65,11 @@ nav {
           align-items: center;
 }
 
+a {
+  color: #FF734B;
+  text-decoration: none;
+}
+
 .menu {
   gap: 6rem;
   display: -webkit-box;

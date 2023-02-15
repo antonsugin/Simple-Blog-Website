@@ -4,16 +4,14 @@ const app = express();
 const path = require("path");
 const router = express.Router();
 
-var bodyParser = require('body-parser')
-// const ejs = require('ejs');
+const _ = require('lodash');
+const bodyParser = require('body-parser')
+const ejs = require('ejs');
 
 
 const port = process.env.PORT || 3000;
-const publicPath = path.join(__dirname, 'public/html');
+// const publicPath = path.join(__dirname, 'public/html');
 
-// let title = '';
-// let text = '';
-// let read = '';
 
 let blogItems = [];
 
@@ -24,7 +22,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 // router.use(express.urlencoded({ extended: false }));
 
-router.get('/',function(req,res){
+router.get('/', (req, res) => {
     
     res.render('blog', {blogs: blogItems});
     
@@ -32,42 +30,46 @@ router.get('/',function(req,res){
 
   });
 
-router.get('/contact',function(req,res){
+router.get('/contact', (req, res) => {
 
     res.render('contact');
-
-    // res.sendFile(publicPath + '/contact.html');
     
   });
 
-router.get('/about',function(req,res){
+router.get('/about', (req, res) => {
 
     res.render('about');
-
-    // res.sendFile(publicPath + '/about.html');
     
   });
 
-router.get('/compose',function(req,res){
+router.get('/compose', (req, res) => {
 
     res.render('compose');
-
-    // res.sendFile(publicPath + '/compose.html');
     
   });
 
 
-// app.post("/", (req, res) => {
+  router.get("/posts/:topic", (req, res) => {
 
+    let reqTitle = _.lowerCase(req.params.topic);
 
+    blogItems.forEach(post => {
+        
+        let postTitle = _.lowerCase(post.title);
+
+        if (reqTitle === postTitle) {
     
+            console.log("match found")
+        }
+        else console.log("no match")
+    })
 
-//     // res.redirect('/about');
-// });
+  })
+
 
 app.post("/compose", (req, res) => {
 
-    let blogItemsObj = {
+    const blogItemsObj = {
         'title' : '',
         'text' : '',
         'readMore' : 'Read More'
@@ -76,9 +78,7 @@ app.post("/compose", (req, res) => {
     blogItemsObj.title = req.body.title;
     blogItemsObj.text = req.body.textarea;
     
-    blogItems.push(blogItemsObj)
-
-    console.log(req.body)
+    blogItems.push(blogItemsObj);
 
     res.redirect('/');
 });
