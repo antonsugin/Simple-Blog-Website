@@ -270,6 +270,12 @@ footer {
   }
 }
 
+.post {
+  white-space: normal;
+  inline-size: 85ch;
+  word-break: break-all;
+}
+
 .read-more {
   letter-spacing: 4px;
   font-family: "Lora", serif;

@@ -58,10 +58,14 @@ router.get('/compose', (req, res) => {
         let postTitle = _.lowerCase(post.title);
 
         if (reqTitle === postTitle) {
-    
-            console.log("match found")
-        }
-        else console.log("no match")
+
+          res.render('post', {
+            postTitle: post.title ,
+            PostText: post.text
+          });
+            
+        };
+        
     })
 
   })
