@@ -225,12 +225,6 @@ footer {
     font-weight: 400;
     font-size: 2.5rem; 
     line-height: 5rem;
-    // white-space: nowrap;
-    // overflow: hidden;
-    // text-overflow: ellipsis;
-    // max-width: 80ch;
-
-    // overflow-wrap: break-word;
 
     @media screen and (max-width: 600px) {
         & {
@@ -246,36 +240,13 @@ footer {
     font-weight: 400;
     font-size: 2.5rem; 
     line-height: 5rem;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    // max-width: 80ch;
-
-    overflow-wrap: break-word;
-    inline-size: 40ch;
-
-    @media screen and (max-width: 1000px) {
-        & {
-            inline-size: 20ch;
-        }
-    }
 
     @media screen and (max-width: 600px) {
         & {
             line-height: 3.5rem;
-            inline-size: 12ch;
         }
     }
     
-}
-
-.post {
-    // width: 100%;
-    // overflow: visible !important; 
-    white-space: normal;
-    // text-overflow: unset;
-    inline-size: 85ch;
-    word-break: break-all;
 }
 
 .read-more {

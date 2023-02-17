@@ -13,10 +13,8 @@
 
             <section class="comment">
                 <h4 class="comment__header"><%= blogs[i].title %></h4>
-                <p class="comment__txt"><%= blogs[i].text %></p>
-                <span class="read-more"><%= blogs[i].readMore %></span>
-
-                <a href="posts/<%= blogs[i].title %>" >read</a>
+                <p class="comment__txt"><%= blogs[i].text.substring(0, 40) + " ..." %></p>
+                <a href="posts/<%= blogs[i].title %>" class="read-more" >Read More</a>
             </section>
         <% } %>
 

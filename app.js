@@ -75,8 +75,7 @@ app.post("/compose", (req, res) => {
 
     const blogItemsObj = {
         'title' : '',
-        'text' : '',
-        'readMore' : 'Read More'
+        'text' : ''
     }
 
     blogItemsObj.title = req.body.title;
